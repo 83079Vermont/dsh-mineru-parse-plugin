@@ -1,5 +1,6 @@
 node_modules/
 .mineru-output/
 .opencode/
+.omo/
 *.log
 .DS_Store
