@@ -11,7 +11,7 @@ A self-contained [DeepSeek Harness](https://github.com/deepseek-ai) (DSH) plugin
 dsh plugin --profile web add mineru-parse-dsh-tool
 
 # from GitHub / 从 GitHub 安装
-dsh plugin --profile web add github:<user>/mineru-parse-dsh-tool
+dsh plugin --profile web add github:83079Vermont/mineru-parse-dsh-tool
 ```
 
 Then mount it in `~/.dsh/profiles/web/cordis.patch.yml` and restart dsh web — see [Installation](#installation--安装).
@@ -81,7 +81,7 @@ Then mount it in `~/.dsh/profiles/web/cordis.patch.yml` and restart dsh web — 
 dsh plugin --profile web add mineru-parse-dsh-tool
 
 # or from GitHub / 或从 GitHub 安装
-dsh plugin --profile web add github:<user>/mineru-parse-dsh-tool
+dsh plugin --profile web add github:83079Vermont/mineru-parse-dsh-tool
 ```
 
 Mount it in `~/.dsh/profiles/web/cordis.patch.yml`, then restart dsh web.
