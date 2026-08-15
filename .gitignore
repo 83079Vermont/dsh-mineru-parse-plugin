@@ -4,3 +4,4 @@ node_modules/
 .omo/
 *.log
 .DS_Store
+.opencode

@@ -41,11 +41,11 @@
 ### 使用者
 
 ```powershell
-# 从 npm 安装(发布到 npm 后)
+# 从 npm 安装
 dsh plugin --profile web add mineru-parse-dsh-tool
 
 # 或从 GitHub 安装
-dsh plugin --profile web add github:83079Vermont/mineru-parse-dsh-tool
+dsh plugin --profile web add github:83079Vermont/dsh-mineru-parse-plugin
 ```
 
 然后在 `~/.dsh/profiles/web/cordis.patch.yml` 中追加挂载条目,重启 dsh web:
@@ -70,20 +70,20 @@ dsh plugin --profile web add file:$HOME/.dsh/plugins/mineru-parse-tool
 
 模型可直接调用的工具,参数如下:
 
-| 参数 | 类型 | 说明 |
-|---|---|---|
-| `paths` | `string[]` | **必填** — 绝对路径(可多个,合并为一次调用) |
-| `backend` | `auto` \| `hybrid-engine` \| `pipeline` \| `vlm-engine` | 默认 `auto`:少于 10 页用 `pipeline`,否则 `hybrid-engine` |
-| `force` | `boolean` | 忽略缓存强制重解析 |
-| `method` | `auto` \| `txt` \| `ocr` | 解析方式(仅 pipeline / hybrid-engine) |
-| `lang` | `string` | OCR 语言,默认 `ch`(仅 pipeline) |
-| `effort` | `medium` \| `high` | hybrid-engine 力度;`high` 带图表分析(更慢) |
-| `keep_images` | `boolean` | 保留抽取的 `images/` 目录 |
-| `no_formula` | `boolean` | 关闭公式识别(默认开启) |
-| `out_dir` | `string` | 输出根目录;默认 `<workspace>/.mineru-output` |
-| `timeout_ms` | `number` | 默认 `600000` |
-| `sandbox_permissions` | `workspace-write` \| `danger-full-access` | 需与 `justification` 成对;仅本次调用升级沙箱权限 |
-| `justification` | `string` | 一句话理由,与 `sandbox_permissions` 成对 |
+| 参数                    | 类型                                                            | 说明                                                          |
+| ----------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
+| `paths`               | `string[]`                                                    | **必填** — 绝对路径(可多个,合并为一次调用)             |
+| `backend`             | `auto` \| `hybrid-engine` \| `pipeline` \| `vlm-engine` | 默认`auto`:少于 10 页用 `pipeline`,否则 `hybrid-engine` |
+| `force`               | `boolean`                                                     | 忽略缓存强制重解析                                            |
+| `method`              | `auto` \| `txt` \| `ocr`                                  | 解析方式(仅 pipeline / hybrid-engine)                         |
+| `lang`                | `string`                                                      | OCR 语言,默认`ch`(仅 pipeline)                              |
+| `effort`              | `medium` \| `high`                                          | hybrid-engine 力度;`high` 带图表分析(更慢)                  |
+| `keep_images`         | `boolean`                                                     | 保留抽取的`images/` 目录                                    |
+| `no_formula`          | `boolean`                                                     | 关闭公式识别(默认开启)                                        |
+| `out_dir`             | `string`                                                      | 输出根目录;默认`<workspace>/.mineru-output`                 |
+| `timeout_ms`          | `number`                                                      | 默认`600000`                                                |
+| `sandbox_permissions` | `workspace-write` \| `danger-full-access`                   | 需与`justification` 成对;仅本次调用升级沙箱权限             |
+| `justification`       | `string`                                                      | 一句话理由,与`sandbox_permissions` 成对                     |
 
 示例:
 
@@ -121,10 +121,10 @@ DSH 的 Windows 沙箱在受限模式(`read-only` / `workspace-write`)下都会�
 
 ## 配置
 
-| 环境变量 | 说明 |
-|---|---|
-| `DSH_MINERU_PARSE_SCRIPT` | 自定义解析脚本的绝对路径,覆盖自带脚本 |
-| `MINERU_BAT` | 供 `parse.ps1` 定位 MinerU 可执行文件的绝对路径 |
+| 环境变量                    | 说明                                             |
+| --------------------------- | ------------------------------------------------ |
+| `DSH_MINERU_PARSE_SCRIPT` | 自定义解析脚本的绝对路径,覆盖自带脚本            |
+| `MINERU_BAT`              | 供`parse.ps1` 定位 MinerU 可执行文件的绝对路径 |
 
 ---
 

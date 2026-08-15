@@ -41,11 +41,11 @@ A self-contained [DeepSeek Harness](https://github.com/deepseek-ai) (DSH) plugin
 ### For DSH users
 
 ```powershell
-# from npm (after publishing)
+# from npm 
 dsh plugin --profile web add mineru-parse-dsh-tool
 
 # or from GitHub
-dsh plugin --profile web add github:83079Vermont/mineru-parse-dsh-tool
+dsh plugin --profile web add github:83079Vermont/dsh-mineru-parse-plugin
 ```
 
 Then mount it in `~/.dsh/profiles/web/cordis.patch.yml` and restart dsh web:
@@ -70,20 +70,20 @@ dsh plugin --profile web add file:$HOME/.dsh/plugins/mineru-parse-tool
 
 Model-invocable tool. Parameters:
 
-| Param | Type | Description |
-|---|---|---|
-| `paths` | `string[]` | **required** — absolute file paths (multiple allowed, merged into one call) |
-| `backend` | `auto` \| `hybrid-engine` \| `pipeline` \| `vlm-engine` | default `auto`: <10 pages → `pipeline`, else `hybrid-engine` |
-| `force` | `boolean` | ignore cache and re-parse |
-| `method` | `auto` \| `txt` \| `ocr` | parsing method (pipeline / hybrid-engine only) |
-| `lang` | `string` | OCR language, default `ch` (pipeline only) |
-| `effort` | `medium` \| `high` | hybrid-engine effort; `high` enables chart analysis (slower) |
-| `keep_images` | `boolean` | keep the extracted `images/` directory |
-| `no_formula` | `boolean` | disable formula recognition (enabled by default) |
-| `out_dir` | `string` | output root; default `<workspace>/.mineru-output` |
-| `timeout_ms` | `number` | default `600000` |
-| `sandbox_permissions` | `workspace-write` \| `danger-full-access` | only with `justification`; widens this one call |
-| `justification` | `string` | one-sentence reason, required with `sandbox_permissions` |
+| Param                   | Type                                                            | Description                                                                        |
+| ----------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `paths`               | `string[]`                                                    | **required** — absolute file paths (multiple allowed, merged into one call) |
+| `backend`             | `auto` \| `hybrid-engine` \| `pipeline` \| `vlm-engine` | default`auto`: <10 pages → `pipeline`, else `hybrid-engine`                 |
+| `force`               | `boolean`                                                     | ignore cache and re-parse                                                          |
+| `method`              | `auto` \| `txt` \| `ocr`                                  | parsing method (pipeline / hybrid-engine only)                                     |
+| `lang`                | `string`                                                      | OCR language, default`ch` (pipeline only)                                        |
+| `effort`              | `medium` \| `high`                                          | hybrid-engine effort;`high` enables chart analysis (slower)                      |
+| `keep_images`         | `boolean`                                                     | keep the extracted`images/` directory                                            |
+| `no_formula`          | `boolean`                                                     | disable formula recognition (enabled by default)                                   |
+| `out_dir`             | `string`                                                      | output root; default`<workspace>/.mineru-output`                                 |
+| `timeout_ms`          | `number`                                                      | default`600000`                                                                  |
+| `sandbox_permissions` | `workspace-write` \| `danger-full-access`                   | only with`justification`; widens this one call                                   |
+| `justification`       | `string`                                                      | one-sentence reason, required with`sandbox_permissions`                          |
 
 Example:
 
@@ -121,10 +121,10 @@ DSH's Windows sandbox blocks MinerU's PDF rendering in every confined mode (`rea
 
 ## Configuration
 
-| Env var | Purpose |
-|---|---|
-| `DSH_MINERU_PARSE_SCRIPT` | absolute path to an alternative `parse.ps1`; overrides the bundled script |
-| `MINERU_BAT` | consumed by `parse.ps1`; absolute path to the MinerU executable |
+| Env var                     | Purpose                                                                    |
+| --------------------------- | -------------------------------------------------------------------------- |
+| `DSH_MINERU_PARSE_SCRIPT` | absolute path to an alternative`parse.ps1`; overrides the bundled script |
+| `MINERU_BAT`              | consumed by`parse.ps1`; absolute path to the MinerU executable           |
 
 ---
 
